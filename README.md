@@ -150,13 +150,4 @@ build_save_model_task
 load_model_task
 ```
 
----
-
-## 🙌 Author
-**Nishchay Linge Gowda**  
-MLOps | Data Engineering | Airflow | Machine Learning
-
----
-
-### ⭐ If you like this project, give the repo a star on GitHub!
 
