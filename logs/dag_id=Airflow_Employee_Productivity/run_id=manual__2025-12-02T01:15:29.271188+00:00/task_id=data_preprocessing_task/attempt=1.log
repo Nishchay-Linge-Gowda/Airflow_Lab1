@@ -1,0 +1,48 @@
+[2025-12-02T01:15:33.907+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-12-02T01:15:33.969+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: Airflow_Employee_Productivity.data_preprocessing_task manual__2025-12-02T01:15:29.271188+00:00 [queued]>
+[2025-12-02T01:15:33.973+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: Airflow_Employee_Productivity.data_preprocessing_task manual__2025-12-02T01:15:29.271188+00:00 [queued]>
+[2025-12-02T01:15:33.973+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2025-12-02T01:15:33.978+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): data_preprocessing_task> on 2025-12-02 01:15:29.271188+00:00
+[2025-12-02T01:15:33.985+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61: DeprecationWarning: This process (pid=118) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2025-12-02T01:15:33.985+0000] {standard_task_runner.py:63} INFO - Started process 127 to run task
+[2025-12-02T01:15:33.993+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'Airflow_Employee_Productivity', 'data_preprocessing_task', 'manual__2025-12-02T01:15:29.271188+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/***.py', '--cfg-path', '/tmp/tmpf8gzs6st']
+[2025-12-02T01:15:34.035+0000] {standard_task_runner.py:91} INFO - Job 14: Subtask data_preprocessing_task
+[2025-12-02T01:15:34.193+0000] {task_command.py:426} INFO - Running <TaskInstance: Airflow_Employee_Productivity.data_preprocessing_task manual__2025-12-02T01:15:29.271188+00:00 [running]> on host 3929e3d117ce
+[2025-12-02T01:15:34.349+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Nishchay Linge Gowda' AIRFLOW_CTX_DAG_ID='Airflow_Employee_Productivity' AIRFLOW_CTX_TASK_ID='data_preprocessing_task' AIRFLOW_CTX_EXECUTION_DATE='2025-12-02T01:15:29.271188+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-02T01:15:29.271188+00:00'
+[2025-12-02T01:15:34.353+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-12-02T01:15:34.406+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-12-02T01:15:34.406+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/src/lab.py", line 33, in data_preprocessing
+    clustering_data = df[features]
+                      ~~^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/frame.py", line 3899, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6115, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "/home/airflow/.local/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 6176, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['Hours_Worked', 'Tasks_Completed', 'Errors_Made', 'Productivity_Score'], dtype='object')] are in the [columns]"
+[2025-12-02T01:15:34.430+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=Airflow_Employee_Productivity, task_id=data_preprocessing_task, run_id=manual__2025-12-02T01:15:29.271188+00:00, execution_date=20251202T011529, start_date=20251202T011533, end_date=20251202T011534
+[2025-12-02T01:15:34.438+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 14 for task data_preprocessing_task ("None of [Index(['Hours_Worked', 'Tasks_Completed', 'Errors_Made', 'Productivity_Score'], dtype='object')] are in the [columns]"; 127)
+[2025-12-02T01:15:34.462+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-12-02T01:15:34.475+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-12-02T01:15:34.476+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
