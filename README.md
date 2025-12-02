@@ -1,4 +1,4 @@
-MLOps Airflow Lab — Employee Productivity Clustering Pipeline
+**MLOps Airflow Lab — Employee Productivity Clustering Pipeline**
 1. Project Overview
 
 This project implements a complete MLOps pipeline using Apache Airflow, Docker, and Machine Learning (KMeans).
